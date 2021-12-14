@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: java-pet
+spec:
+  containers:
+  - name: java-pet
+    image: java-pet2
+    ports:
+    - containerPort: 6380
+    resources:
+      limits:
+        cpu: "0.1"
+    volumeMounts:
+    - mountPath: /java-pet-master-data
+      name: data
+    - mountPath: /java-pet-master
+      name: config
+  volumes:
+    - name: data
+      emptyDir: {}
+    - name: config
+      configMap:
+        name: self-java-pet
