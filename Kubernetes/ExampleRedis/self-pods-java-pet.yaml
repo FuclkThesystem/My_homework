@@ -6,11 +6,13 @@ spec:
   containers:
   - name: java-pet
     image: java-pet2
+    imagePullPolicy: Never
     ports:
-    - containerPort: 6380
+    - containerPort: 6390
     resources:
       limits:
         cpu: "0.1"
+        memory: 100Mi
     volumeMounts:
     - mountPath: /java-pet-master-data
       name: data
