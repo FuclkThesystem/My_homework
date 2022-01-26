@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+    namespace: default
+    name: java-pet
+    labels:
+        app: java-pet
+spec:
+    ports:
+      - protocol: TCP
+        port: 80
+        targetPort: 6390
+    selector:
+        app: java-pet

@@ -1,0 +1,6 @@
+- name: "Create prometheus ConfigMap"
+  command: "kubectl apply -f /Users/vladislavbatog/LocalRepoGit/Kubernetes/prometheus-k8s/prometheus-configmap.yaml.j2"
+- name: "Create prometheus Deployment"
+  command: "kubectl apply -f /Users/vladislavbatog/LocalRepoGit/Kubernetes/prometheus-k8s/prometheus-deployment.yaml.j2"
+- name: "Create prometheus Service"
+  command: "kubectl apply -f /Users/vladislavbatog/LocalRepoGit/Kubernetes/prometheus-k8s/prometheus-service.yaml.j2"

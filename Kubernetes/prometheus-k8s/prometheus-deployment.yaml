@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-server
+  labels:
+    app: prometheus
+  namespace: monitoring
+#  annotations:
+#    reloader.stakater.com/auto: "true"
+#    service.beta.kubernetes.io/aws-load-balancer-internal: "true"  
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus-server
+        image: prom/prometheus
+        volumeMounts:
+          - name: prometheus-config-volume
+            mountPath: /etc/prometheus/prometheus.yml
+            subPath: prometheus.yml
+        ports:
+        - containerPort: 9090
+      volumes:
+        - name: prometheus-config-volume
+          configMap:
+            name: prometheus-config

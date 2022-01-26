@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: java-pet
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: "java-pet.example.com"
+    http:
+    - path: /
+      backend:
+        serviceName: java-pet
+        servicePort: 80
